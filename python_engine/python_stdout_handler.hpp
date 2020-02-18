@@ -28,17 +28,16 @@ public:
   PythonStdoutHandler();
   virtual ~PythonStdoutHandler();
 
-  PythonStdoutHandler(PythonStdoutHandler const &other) = delete;
-  PythonStdoutHandler &operator=(PythonStdoutHandler const &other) = delete;
+  PythonStdoutHandler(PythonStdoutHandler const &other) { copy(other); }
+  PythonStdoutHandler &operator=(PythonStdoutHandler const &other) { copy(other); return *this; }
   bool operator==(PythonStdoutHandler const &other) = delete;
   bool operator<(PythonStdoutHandler const &other) = delete;
 
+  void copy(PythonStdoutHandler const &other);
   void write(const std::string& text);
 
-  virtual const_iterator begin() const;
-  virtual const_iterator end() const;
+  std::function<void (const std::string& text)> storeFunction;
 protected:
 
 private:
-  std::vector<std::string> store;
 };

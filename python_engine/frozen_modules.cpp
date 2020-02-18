@@ -50,6 +50,13 @@ void addFrozenPythonModules(std::vector<struct _frozen> &modules)
     }
     {
       struct _frozen m;
+      m.name = "importlib__machinery";
+      m.code = M_importlib__machinery;
+      m.size = sizeof(M_importlib__machinery);
+      modules.push_back(m);
+    }
+    {
+      struct _frozen m;
       m.name = "abc";
       m.code = M_abc;
       m.size = sizeof(M_abc);
@@ -76,14 +83,6 @@ void addFrozenPythonModules(std::vector<struct _frozen> &modules)
       m.size = sizeof(M_encodings__utf_8);
       modules.push_back(m);
     }
-    // {
-    //   struct _frozen m;
-    //   m.name = "__main__";
-    //   m.code = M___main__;
-    //   m.size = sizeof(M___main__);
-    //   modules.push_back(m);
-    // }
-
     {
       struct _frozen terminator;
       terminator.name = 0;

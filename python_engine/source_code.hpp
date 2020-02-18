@@ -37,10 +37,29 @@ public:
   {
   }
 
-  SourceCode(SourceCode const &other) = delete;
-  SourceCode &operator=(SourceCode const &other) = delete;
+  SourceCode()
+  {
+  }
+
+  SourceCode(SourceCode const &other)
+  {
+    copy(other);
+  }
+  SourceCode &operator=(SourceCode const &other)
+  {
+    copy(other);
+    return *this;
+  }
   bool operator==(SourceCode const &other) = delete;
   bool operator<(SourceCode const &other) = delete;
+
+  virtual void copy(SourceCode const &other)
+  {
+    for(const auto &i : other)
+    {
+      store.push_back(i);
+    }
+  }
 
   virtual const_iterator begin() const
   {
@@ -53,6 +72,17 @@ public:
   }
 
   std::vector<std::string> store;
+
+  std::string asString()
+  {
+    std::string s;
+    for( auto const &line : store)
+    {
+      s += line;
+      s += "\n";
+    }
+    return s;
+  }
 
 protected:
 

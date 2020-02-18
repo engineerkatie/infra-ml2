@@ -20,6 +20,7 @@
 #include <memory>
 
 class PythonEngineContextInner;
+class PythonEngine;
 
 class PythonEngineContext
 {

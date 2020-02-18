@@ -21,6 +21,7 @@
 #include <mutex>
 
 #include "python_engine/source_code.hpp"
+#include "python_engine/execution_result.hpp"
 
 class PythonEngineContext;
 
@@ -31,6 +32,7 @@ public:
   virtual ~PythonSystemCore();
 
   std::shared_ptr<PythonEngineContext> createContext(const SourceCode &source);
+  void executeContext(std::shared_ptr<PythonEngineContext> &context, ExecutionResult &result);
 
   PythonSystemCore(PythonSystemCore const &other) = delete;
   PythonSystemCore &operator=(PythonSystemCore const &other) = delete;

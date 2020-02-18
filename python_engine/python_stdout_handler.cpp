@@ -8,21 +8,21 @@ PythonStdoutHandler::PythonStdoutHandler()
 
 PythonStdoutHandler::~PythonStdoutHandler()
 {
-  std::cout << "PythonStdoutHandler::~PythonStdoutHandler" << std::endl;
 }
 
 void PythonStdoutHandler::write(const std::string& text)
 {
-  std::cout << text << std::endl;
-  store.push_back(text);
+  if (storeFunction)
+  {
+    storeFunction(text);
+  }
+  else
+  {
+    std::cout << text << std::endl;
+  }
 }
 
-PythonStdoutHandler::const_iterator PythonStdoutHandler::begin() const
+void PythonStdoutHandler::copy(PythonStdoutHandler const &other)
 {
-  return store.begin();
-}
-
-PythonStdoutHandler::const_iterator PythonStdoutHandler::end() const
-{
-  return store.end();
+  this -> storeFunction = other.storeFunction;
 }
