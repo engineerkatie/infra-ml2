@@ -46,7 +46,7 @@ void handleBoostPythonError()
   //long lineno = boost::python::extract<long> (traceback.attr("tb_lineno"));
   //std::string filename = boost::python::extract<std::string>(traceback.attr("tb_frame").attr("f_code").attr("co_filename"));
   //std::string funcname = boost::python::extract<std::string>(traceback.attr("tb_frame").attr("f_code").attr("co_name"));
-  std::cerr << "fuck1 " << strErrorMessage << std::endl;
+  std::cerr << "fail " << strErrorMessage << std::endl;
   exit(78);
 }
 
