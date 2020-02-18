@@ -206,7 +206,7 @@ std::shared_ptr<PythonEngineContext> PythonSystemCore::createContext(const Sourc
   //std::cout << "PythonSystemCore::createContext, 4" << std::endl;
 
   //std::cout << "PythonSystemCore::createContext, 5" << std::endl;
-  //context -> inner -> interp = Py_NewInterpreter();
+  context -> inner -> interp = Py_NewInterpreter();
   //std::cout << "PythonSystemCore::createContext, 6" << std::endl;
 
   context -> inner -> stdout = boost::shared_ptr<PythonStdoutHandler>(new PythonStdoutHandler());
